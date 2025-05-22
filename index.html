@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ЖК Zharyslam - Басты бет</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Тіркелу модалдық терезесі үшін стильдер */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 2rem;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-group label {
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-group input {
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    
+    .submit-btn {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    
+    .submit-btn:hover {
+      background-color: #c0392b;
+    }
+    
+    .register-link {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    
+    .register-link a {
+      color: #e74c3c;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Тіркелу модалдық терезесі -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Кіру</h2>
+      <form class="login-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Құпия сөз</label>
+          <input type="password" id="password" required>
+        </div>
+        <button type="submit" class="submit-btn">Кіру</button>
+        <div class="register-link">
+          <p>Аккаунтыңыз жоқ па? <a href="#" id="showRegister">Тіркелу</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Тіркелу модалдық терезесі -->
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Тіркелу</h2>
+      <form class="login-form">
+        <div class="form-group">
+          <label for="reg-name">Аты-жөні</label>
+          <input type="text" id="reg-name" required>
+        </div>
+        <div class="form-group">
+          <label for="reg-email">Email</label>
+          <input type="email" id="reg-email" required>
+        </div>
+        <div class="form-group">
+          <label for="reg-password">Құпия сөз</label>
+          <input type="password" id="reg-password" required>
+        </div>
+        <div class="form-group">
+          <label for="reg-confirm">Құпия сөзді растау</label>
+          <input type="password" id="reg-confirm" required>
+        </div>
+        <button type="submit" class="submit-btn">Тіркелу</button>
+        <div class="register-link">
+          <p>Аккаунтыңыз бар ма? <a href="#" id="showLogin">Кіру</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Zharyslam</a>
+      <nav>
+        <div class="nav-links">
+          <a href="index.html" class="active">Басты</a>
+          <a href="about.html">Жоба</a>
+          <a href="plans.html">Планировкалар</a>
+          <a href="news.html">Жаңалықтар</a>
+          <a href="contact.html">Байланыс</a>
+          <a href="#" id="loginBtn">Кіру</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>ЖК «Zharyslam»</h1>
+      <p>Нархоз Университетінің жанындағы заманауи тұрғын үй кешені</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <section>
+      <h2 class="section-title">Қысқаша сипаттама</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Локация" class="card-img">
+          <div class="card-body">
+            <h3>Тамаша орналасу</h3>
+            <p>Нархоз Университетіне жақын, қала орталығында</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Инфрақұрылым" class="card-img">
+          <div class="card-body">
+            <h3>Дамыған инфрақұрылым</h3>
+            <p>Мектептер, балабақшалар, сауда орталықтары</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2023 ЖК Zharyslam. Барлық құқықтар сақталған.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Модалдық терезені басқару
+    const loginModal = document.getElementById('loginModal');
+    const registerModal = document.getElementById('registerModal');
+    const loginBtn = document.getElementById('loginBtn');
+    const showRegister = document.getElementById('showRegister');
+    const showLogin = document.getElementById('showLogin');
+    const closeBtns = document.querySelectorAll('.close-btn');
+    
+    // Кіру батырмасын басқанда
+    loginBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      loginModal.style.display = 'block';
+    });
+    
+    // Тіркелу сілтемесін басқанда
+    showRegister.addEventListener('click', (e) => {
+      e.preventDefault();
+      loginModal.style.display = 'none';
+      registerModal.style.display = 'block';
+    });
+    
+    // Кіру сілтемесін басқанда
+    showLogin.addEventListener('click', (e) => {
+      e.preventDefault();
+      registerModal.style.display = 'none';
+      loginModal.style.display = 'block';
+    });
+    
+    // Жабу батырмалары
+    closeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        loginModal.style.display = 'none';
+        registerModal.style.display = 'none';
+      });
+    });
+    
+    // Модалдық терезенің сыртын басқанда жабу
+    window.addEventListener('click', (e) => {
+      if (e.target === loginModal) {
+        loginModal.style.display = 'none';
+      }
+      if (e.target === registerModal) {
+        registerModal.style.display = 'none';
+      }
+    });
+    
+    // Пайдаланушы кірген кезде автоматты түрде көрсету
+    document.addEventListener('DOMContentLoaded', () => {
+      // Бұл жерде сіз пайдаланушының аутентификациясын тексеруіңіз керек
+      // Мысал үшін, localStorage арқылы:
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      
+      if (!isLoggedIn) {
+        setTimeout(() => {
+          loginModal.style.display = 'block';
+        }, 1000); // 1 секунд кейін көрсету
+      }
+    });
+    
+    // Кіру формасын өңдеу
+    document.querySelector('.login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      // Бұл жерде аутентификация логикасын қосу керек
+      console.log('Кіру әрекеті:', { email, password });
+      
+      // Мысал үшін:
+      localStorage.setItem('isLoggedIn', 'true');
+      loginModal.style.display = 'none';
+      alert('Сәтті кірдіңіз!');
+    });
+    
+    // Тіркелу формасын өңдеу
+    document.querySelector('#registerModal .login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('reg-name').value;
+      const email = document.getElementById('reg-email').value;
+      const password = document.getElementById('reg-password').value;
+      const confirm = document.getElementById('reg-confirm').value;
+      
+      if (password !== confirm) {
+        alert('Құпия сөздер сәйкес келмейді!');
+        return;
+      }
+      
+      // Бұл жерде тіркеу логикасын қосу керек
+      console.log('Тіркеу әрекеті:', { name, email, password });
+      
+      // Мысал үшін:
+      localStorage.setItem('isLoggedIn', 'true');
+      registerModal.style.display = 'none';
+      alert('Сәтті тіркелдіңіз! Қазір кіре аласыз.');
+    });
+  </script>
+</body>
+</html>
